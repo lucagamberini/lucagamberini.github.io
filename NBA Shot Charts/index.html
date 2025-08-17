@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evoluzione delle scelte di tiro in NBA</title>
+    <style>
+        #img_container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1200px; /* Larghezza massima relativa */
+            height: 1100px; /* Altezza fissa per mantenere lo spazio costante */
+            margin: -60px auto;
+            border: 1px #ccc; /* Facoltativo: bordo per visualizzare il contenitore */
+        }
+
+        #img_container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Mantiene proporzioni dell'immagine */
+        }
+
+        select {
+            margin-left: 50px;
+            padding: 10px 15px;
+            font-size: 1em;
+            color: white;
+            background-color: #007bff; /* Blu intenso */
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Evoluzione delle scelte di tiro in NBA (1999-2020)</h1></center>
+    <label for="seasons"></label> 
+    <select name="seasons" id="seasons" onchange="show_img(this.value)">
+        <option value="1999-00" selected>1999-2000</option> 
+        <option value="2009-10">2009-2010</option>
+        <option value="2014-15">2014-2015</option>
+        <option value="2019-20">2019-2020</option>
+    </select>
+    <div id="img_container">
+        <img id="season_img" src="./1999-00_shot_chart.png" alt="Shot chart della stagione 1999-2000" />
+    </div>
+    <script>
+        function show_img(item) {
+            const img_paths = {
+                '1999-00': './1999-00_shot_chart.png',
+                '2009-10': './2009-10_shot_chart.png',
+                '2014-15': './2014-15_shot_chart.png',
+                '2019-20': './2019-20_shot_chart.png',
+            };
+
+            const img_element = document.getElementById('season_img');
+            img_element.src = img_paths[item] || '';
+            img_element.alt = `Shot chart della stagione ${item}`;
+        }
+    </script>
+</body>
+</html>
